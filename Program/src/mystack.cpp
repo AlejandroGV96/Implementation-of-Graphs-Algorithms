@@ -7,6 +7,7 @@ private:
     struct Node {
         T data;
         std::shared_ptr<Node> next = nullptr;
+        Node(const T& t) : data{ t } {}
     };
 public:
     std::shared_ptr<Node> top;
@@ -24,9 +25,9 @@ public:
         }
     }
 
-    void push(T val) {
+    void push(const T& val) {
         
-        std::shared_ptr<Node> newNode(new Node);
+        std::shared_ptr<Node> newNode = std::make_shared<Node>(val);
         newNode->data = val;
         newNode->next = nullptr;
         if (top != nullptr) {
@@ -37,7 +38,7 @@ public:
 
     void pop() {
         if (top == nullptr) {
-            std::cout << ("the Stack is empty!");
+            std::cout << ("Nothing to pop. The Stack is empty!\n");
             return;
         }
         std::shared_ptr<Node> tmp = top->next;
@@ -46,7 +47,7 @@ public:
 
     T peek() {
         if (isEmpty()) {
-            std::cout << "Empty Stack" << std::endl;
+            std::cout << "Empty Stack-> ";
             return NULL;
         }
         else {
@@ -64,16 +65,17 @@ public:
     }
     void display() {
         if (top == nullptr) {
-            std::cout << ("the Stack is empty!");
-            return;
+            std::cout << ("The Stack is empty!\n");
         }
-        std::cout << "All values in the Stack are :" << std::endl;
-        std::shared_ptr<Node> temp = top;
-        while (temp.get() != nullptr) {
-            std::cout << "(" << temp->data << ")" << " -> ";
-            temp = temp->next;
+        else {
+            std::cout << "All values in the Stack are :\n";
+            std::shared_ptr<Node> temp = top;
+            while (temp.get() != nullptr) {
+                std::cout << "(" << temp->data << ")" << " -> ";
+                temp = temp->next;
+            }
+            std::cout << "End of Stack!\n";
         }
-        std::cout << "End of Stack!" << std::endl;
     }
 
 };
