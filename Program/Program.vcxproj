@@ -151,8 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\myQueue.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\mystack.cpp" />
+    <ClCompile Include="src\myStack.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
