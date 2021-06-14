@@ -1,7 +1,7 @@
 #include<iostream>
-
+/*
 template<typename T>
-class Queue {
+class Stack {
 
 private:
     struct Node {
@@ -10,17 +10,14 @@ private:
         Node(const T& t) : data{ t } {}
     };
 public:
-    std::shared_ptr<Node> rear;
-    std::shared_ptr<Node> front;
+    std::shared_ptr<Node> top;
 
-
-    Queue() {
-        rear = nullptr;
-        front = nullptr;
+    Stack() {
+        top = nullptr;
     }
 
     bool isEmpty() {
-        if (front == nullptr) {
+        if (top == nullptr) {
             return true;
         }
         else {
@@ -29,30 +26,23 @@ public:
     }
 
     void push(const T& val) {
-
+        
         std::shared_ptr<Node> newNode = std::make_shared<Node>(val);
-        if (rear)
-        {
-            rear->next = newNode;
+        newNode->data = val;
+        newNode->next = nullptr;
+        if (top != nullptr) {
+            newNode->next = top;
         }
-        rear = newNode;
-        if (!front)
-        {
-            front = rear;
-        }
+        top = newNode;
     }
 
     void pop() {
-        if (front == nullptr) {
+        if (top == nullptr) {
             std::cout << ("Nothing to pop. The Stack is empty!\n");
             return;
         }
-        std::shared_ptr<Node> tmp = front->next;
-        front = tmp;
-        if (!front)
-        {
-            rear = front;
-        }
+        std::shared_ptr<Node> tmp = top->next;
+        top = tmp;
     }
 
     T peek() {
@@ -61,31 +51,32 @@ public:
             return NULL;
         }
         else {
-            return front->data;
+            return top->data;
         }
     }
     int size() {
         int count = 0;
-        std::shared_ptr<Node> tmp = front;
-        while (tmp.get() != nullptr) {
+        std::shared_ptr<Node> temp = top;
+        while (temp.get() != nullptr) {
             count++;
-            tmp = tmp->next;
+            temp = temp->next;
         }
         return count;
     }
     void display() {
-        if (front == nullptr) {
-            std::cout << ("The Queue is empty!\n");
+        if (top == nullptr) {
+            std::cout << ("The Stack is empty!\n");
         }
         else {
-            std::cout << "All values in the Queue are :\n";
-            std::shared_ptr<Node> temp = front;
+            std::cout << "All values in the Stack are :\n";
+            std::shared_ptr<Node> temp = top;
             while (temp.get() != nullptr) {
                 std::cout << "(" << temp->data << ")" << " -> ";
                 temp = temp->next;
             }
-            std::cout << "End of Queue!\n";
+            std::cout << "End of Stack!\n";
         }
     }
 
 };
+*/

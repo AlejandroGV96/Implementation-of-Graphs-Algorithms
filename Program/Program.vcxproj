@@ -151,9 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\myQueue.cpp" />
+    <ClCompile Include="src\myQueue.hpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\myStack.cpp" />
+    <ClCompile Include="src\myStack.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\myGraph.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

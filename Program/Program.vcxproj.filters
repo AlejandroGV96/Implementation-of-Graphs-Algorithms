@@ -18,11 +18,16 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\myStack.cpp">
+    <ClCompile Include="src\myStack.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\myQueue.cpp">
+    <ClCompile Include="src\myQueue.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\myGraph.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
