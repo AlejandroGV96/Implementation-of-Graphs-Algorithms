@@ -56,17 +56,21 @@ int main() {
 
 	std::cout << "\n------------GRAPH TEST--------------" << std::endl;
 	Graph graphTest(7);
-	graphTest.addEdge(0, 1,1);
-	graphTest.addEdge(0, 2,1);
-	graphTest.addEdge(1, 3,1);
-	graphTest.addEdge(1, 4,1);
-	graphTest.addEdge(2, 5,1);
-	graphTest.addEdge(2, 6,1);
-	std::cout << "Depth First Search:	";
+	graphTest.addEdge(0, 1, 2);
+	graphTest.addEdge(0, 2, 4);
+	graphTest.addEdge(1, 3, 6);
+	graphTest.addEdge(2, 3, 5);
+	graphTest.addEdge(3, 5, 3);
+	graphTest.addEdge(3, 4, 2);
+	graphTest.addEdge(5, 6, 2);
+	graphTest.addEdge(4, 6, 4);
+		
+	std::cout << "\nDepth First Search:	";
 	graphTest.DFS(0);
-	std::cout << "Breath First Search:	";
+	std::cout << "\nBreath First Search:	";
 	graphTest.BFS(0);
-	
+	std::cout << "\nDijstra's shortest path:	\n";
 	graphTest.Dijkstra(0);
+
 
 }
