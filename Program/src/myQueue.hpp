@@ -1,6 +1,6 @@
 #include<iostream>
-/*
-template<typename T>
+
+template<typename T = int>
 class Queue {
 
 private:
@@ -87,6 +87,4 @@ public:
             std::cout << "End of Queue!\n";
         }
     }
-
 };
-*/
