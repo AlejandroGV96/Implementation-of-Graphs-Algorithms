@@ -1,6 +1,6 @@
 #include<iostream>
-/*
-template<typename T>
+
+template<typename T = int>
 class Stack {
 
 private:
@@ -36,13 +36,15 @@ public:
         top = newNode;
     }
 
-    void pop() {
+    T pop() {
         if (top == nullptr) {
             std::cout << ("Nothing to pop. The Stack is empty!\n");
-            return;
+            return NULL;
         }
+        T retPopped = top->data;
         std::shared_ptr<Node> tmp = top->next;
         top = tmp;
+        return retPopped;
     }
 
     T peek() {
@@ -79,4 +81,3 @@ public:
     }
 
 };
-*/
