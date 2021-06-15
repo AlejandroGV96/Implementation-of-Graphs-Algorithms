@@ -1,16 +1,15 @@
+#include <list>
+#include <algorithm>
 #include "myGraph.hpp"
 #include "myQueue.hpp"
 #include "myStack.hpp"
 
-
-Graph::Graph(const int& vertices) :numVertices(vertices), adjLists(new std::vector<edge>[vertices]), vertList(new std::vector<vertex>[vertices]) {};
+Graph::Graph(const int& vertices) :numVertices(vertices), adjLists(new std::vector<edge>[vertices]) {};
 Graph::~Graph() {
     for (auto i = 0; i < numVertices; i++) {
         adjLists[i].clear();
-        vertList[i].clear();
     }
     delete[] adjLists;
-    delete[] vertList;
 }
 
 void Graph::addEdge(const int& src, const int& dest, const int& dist) {
@@ -20,32 +19,21 @@ void Graph::addEdge(const int& src, const int& dest, const int& dist) {
 
 void Graph::DFS(int currVertex)
 {
-    // Initially mark all verices as not visited
     std::vector<bool> visited(numVertices, false);
-
-    // Create a stack for DFS
     Stack stack;
-
-    // Push the current source node.
     stack.push(currVertex);
 
     while (!stack.isEmpty())
     {
-        // Pop a vertex from stack and print it
         currVertex = stack.pop();
 
-        // Stack may contain same vertex twice. So
-        // we need to print the popped item only
-        // if it is not visited.
         if (!visited[currVertex])
         {
             std::cout << "Visited " << currVertex << " ";
             visited[currVertex] = true;
         }
 
-        // Get all adjacent vertices of the popped vertex s
-        // If a adjacent has not been visited, then push it
-        // to the stack.
+
         for (int i = 0; i < adjLists[currVertex].size(); i++) {
             if (!visited[adjLists[currVertex][i].dest]) stack.push(adjLists[currVertex][i].dest);
         }
@@ -81,38 +69,36 @@ void Graph::BFS(const int& startVertex) {
 }
 
 void Graph::Dijkstra(const int& startVertex) {
-    std::vector<int> distFromVrtx(numVertices, INT_MAX);
-    std::vector<bool> visitedVrtx(numVertices, false);
-    std::vector<edge>* shortestPaths = new std::vector<edge>[numVertices];
-    //shortestPath->push_back({ 1,2,3 });
 
-    distFromVrtx[startVertex] = 0;
-    visitedVrtx[startVertex] = true;
-    auto& closestNode = adjLists[startVertex][0];
-    for (int i = 0; i < numVertices; i++) {
+    int* dist = new int[numVertices];
+    int* prev = new int[numVertices];
 
-        if (visitedVrtx[i]) continue;
+    for (int u = 0; u < numVertices; u++) {
+        dist[u] = 10000000;
+        prev[u] = -1;
+    }
 
-        auto& closestNode = adjLists[i][0];
-        for (auto& el : adjLists[i]) {
-            distFromVrtx[el.dest] = el.dist;
-            if (closestNode.dist > el.dist) closestNode = el;
+    dist[startVertex] = 0;
+    std::list<int> queue;
+
+    for (int u = 0; u < numVertices; u++) {
+        queue.push_back(u);
+    }
+
+    while (!queue.empty()) {
+        int u = *std::min_element(queue.begin(), queue.end());
+        queue.remove(u);
+
+        for (auto& el : adjLists[u]) {
+            if ((dist[u] + (el.dist)) < dist[el.dest]) {
+                dist[el.dest] = (dist[u] + (el.dist));
+                prev[el.dest] = u;
+            }
         }
-        visitedVrtx[closestNode.src] = true;
-        shortestPaths[i].push_back(closestNode);
-    }
-    /*
-    auto& closestNode = adjLists[startVertex][0];
-    for (auto& el : adjLists[startVertex]) {
-        distFromVrtx[el.dest] = el.dist;
-        if (closestNode.dist > el.dist) closestNode = el;
-    }
-    visitedVrtx[closestNode.src] = true;
-    shortestPaths[startVertex].push_back(closestNode);
-    */
 
-    for (auto el : distFromVrtx) {
-        std::cout << el << ", ";
     }
+    for (int i = 0; i < numVertices; i++)
+        if (i != startVertex)
+            std::cout << "From " << startVertex << " to " << i << ", Cost: " << dist[i] << " Previous vertex: " << prev[i] << std::endl;
 
 }
