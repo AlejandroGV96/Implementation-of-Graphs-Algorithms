@@ -20,7 +20,7 @@ std::ostream& operator<<(std::ostream& os, const test& tst)
 
 int main() {
 	
-	std::cout << "Empirical Analysis of Sort Algorithms.\n\n	Author: Alejandro Garcia Vera.\n	ID: w63666.\n	Subject: Algorithms and Data Structures.\n	Year of study: First year, second semester.\n\n\The program will use the custom Queue and Stack data structures.\nBoth of them accept different data types and custom data types, and they use 'int' by default.\nAlso, the Depth-First Search, Breath-First Search and the Dijkstra algorithm are being tested.\nThe Depth-First Search and Breath-First Search algorithms use the 'Stack' and 'Queue' custom implementations.\n";
+	std::cout << "Implementation of Graphs' Algorithms.\n\n	Author: Alejandro Garcia Vera.\n	ID: w63666.\n	Subject: Algorithms and Data Structures.\n	Year of study: First year, second semester.\n\n\The program will use the custom Queue and Stack data structures.\nBoth of them accept different data types and custom data types, and they use 'int' by default.\nAlso, the Depth-First Search, Breath-First Search and the Dijkstra algorithm are being tested.\nThe Depth-First Search and Breath-First Search algorithms use the 'Stack' and 'Queue' custom implementations.\n";
 
 	std::cout << "\n------------STACK TEST--------------" << std::endl;
 	Stack<test> stackTest;
