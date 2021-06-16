@@ -94,5 +94,6 @@ void Graph::Dijkstra(const int& startVertex) {
     for (int i = 0; i < numVertices; i++)
         if (i != startVertex)
             std::cout << "From " << startVertex << " to " << i << ", Cost: " << dist[i] << " Previous vertex: " << prev[i] << std::endl;
-
+    delete[] dist;
+    delete[] prev;
 }
