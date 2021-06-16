@@ -4,13 +4,7 @@
 #include "myQueue.hpp"
 #include "myStack.hpp"
 
-Graph::Graph(const int& vertices) :numVertices(vertices), adjLists(new std::vector<edge>[vertices]) {};
-Graph::~Graph() {
-    for (auto i = 0; i < numVertices; i++) {
-        adjLists[i].clear();
-    }
-    delete[] adjLists;
-}
+Graph::Graph(const int& vertices) :numVertices(vertices), adjLists{vertices} {};
 
 void Graph::addEdge(const int& src, const int& dest, const int& dist) {
     adjLists[src]. push_back({ src,dest,dist });

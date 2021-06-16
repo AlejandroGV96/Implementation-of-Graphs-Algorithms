@@ -18,11 +18,10 @@ struct edge
 class Graph {
 private:
     int numVertices;
-    std::vector<edge>* adjLists;
+    std::vector<std::vector<edge>> adjLists;
 
 public:
     Graph(const int& vertices);
-    ~Graph();
     void addEdge(const int& src, const int& dest, const int& dist);
     void DFS(int vertex);
     void BFS(const int& startVertex);
