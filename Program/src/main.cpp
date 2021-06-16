@@ -55,6 +55,7 @@ int main() {
 	std::cout << "Size: " << queueTest.size() << std::endl;
 
 	std::cout << "\n------------GRAPH TEST--------------" << std::endl;
+
 	Graph graphTest(7);
 	graphTest.addEdge(0, 1, 2);
 	graphTest.addEdge(0, 2, 4);
@@ -72,5 +73,5 @@ int main() {
 	std::cout << "\nDijstra's shortest path:	\n";
 	graphTest.Dijkstra(0);
 
-
+	std::cin.get();
 }
